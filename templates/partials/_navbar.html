@@ -1,7 +1,13 @@
 {% load static %}
 <!-- Navbar -->
-<nav class="navbar is-light">
+<nav class="navbar is-light" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a href="{% url 'index' %}" class="navbar-item"><strong>Jobs Finder</strong></a>
+  </div>
+
+  <div class="navbar-menu">
+    <div class="navbar-end">
+      <a href="{% url 'signup' %}" class="navbar-item"><strong>Sign Up</strong></a>
+    </div>
   </div>
 </nav>
