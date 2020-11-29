@@ -1,14 +1,25 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Bulma -->
+  <link rel="stylesheet" href="{% static 'css/bulma.min.css' %}" />
+
   <!-- page title  -->
   <title>{% block title %} {% endblock %}Job Finder</title>
 </head>
 <body>
+  <!-- Navbar -->
+  {% include 'partials/_navbar.html' %}
+
   <!-- page content -->
-  {% block content %} {% endblock content %}
+  <section class="section">
+    <div class="container">
+      {% block content %} {% endblock content %}
+    </div>
+  </section>
 </body>
 </html>
