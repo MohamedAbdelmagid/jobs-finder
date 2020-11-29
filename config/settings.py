@@ -34,6 +34,8 @@ DEBUG = os.getenv('DEBUG')
 ALLOWED_HOSTS = []
 
 LOGOUT_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'index'
+LOGIN_URL = 'login'
 
 # Application definition
 

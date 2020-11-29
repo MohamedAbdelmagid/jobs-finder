@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="columns">
+    <div class="column is-6 is-offset-3">
+      <h1 class="title">Log in</h1>
+      <form action="." method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="field">
+          <div class="control">
+            <button class="button">Log In </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}
