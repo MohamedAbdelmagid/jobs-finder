@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2 class="title">Dashboard</h2>
+
+  {% if profile.is_employer %}
+    Is employer
+  {% else %}
+    Is hunter
+  {% endif %}
+  
+{% endblock content %}

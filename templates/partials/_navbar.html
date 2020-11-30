@@ -8,6 +8,7 @@
   <div class="navbar-menu">
     <div class="navbar-end">
       {% if user.is_authenticated %}
+      <a href="{% url 'dashboard' %}" class="navbar-item"><strong>{{ user.username | capfirst }}</strong></a>
       <a href="{% url 'logout' %}" class="navbar-item"><strong>Log Out</strong></a>
       {% else %}
       <a href="{% url 'signup' %}" class="navbar-item"><strong>Sign Up</strong></a>
