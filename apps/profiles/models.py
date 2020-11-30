@@ -10,3 +10,6 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+User.profile = property(lambda u: Profile.objects.get_or_create(user=u)[0])
