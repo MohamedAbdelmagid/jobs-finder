@@ -2,9 +2,14 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 
+from apps.jobs.models import Job
+
 
 def index(request):
-    return render(request, 'core/index.html')
+    jobs = Job.objects.all()
+
+    context = { 'jobs': jobs }
+    return render(request, 'core/index.html', context)
 
 def signup(request):
     if request.method == 'POST':
