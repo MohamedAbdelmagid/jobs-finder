@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
+from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm
 
 from apps.jobs.models import Job
@@ -15,8 +15,13 @@ def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            login(request, user)
+            form.save()
+
+            # Authenticate the new user
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = auth.authenticate(username=username, password=password)
+            auth.login(request, user)
 
             return redirect('index')
     else:
