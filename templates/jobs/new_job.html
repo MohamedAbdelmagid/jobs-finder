@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+  
+  <h1 class="title">New job</h1>
+
+  <form action="{% url 'new_job' %}" method="POST">
+    {% csrf_token %}
+
+    {% if form.errors %}
+      {% for error in form.errors %}
+        <div class="notification is-danger">
+          {{ error }}
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    <div class="field">
+      <label>Title</label>
+      <div class="control">
+        <input type="text" name="title" id="id_title">
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Description</label>
+      <div class="control">
+        <textarea name="description" id="id_description" class="textarea"></textarea>
+      </div>
+    </div>
+    
+    <div class="field">
+      <label>Detailed description</label>
+      <div class="control">
+        <textarea name="details" id="id_details" class="textarea"></textarea>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <button class="button">Submit</button>
+      </div>
+    </div>
+  </form>
+{% endblock content %}
