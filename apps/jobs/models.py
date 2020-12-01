@@ -11,7 +11,17 @@ class Job(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    employer = models.ForeignKey(User, on_delete=models.CASCADE)
+    employer = models.ForeignKey(User, related_name='jobs', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
+
+class Application(models.Model):
+    """ Model that represent user application for a job in database """
+
+    job = models.ForeignKey(Job, related_name='applications', on_delete=models.CASCADE)
+    content = models.TextField()
+    experience = models.TextField()
+    updated_at = models.DateTimeField(auto_now=True)
+
+    applicant = models.ForeignKey(User, related_name='applications', on_delete=models.CASCADE)

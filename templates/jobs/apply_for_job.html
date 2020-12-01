@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+  
+  <h1 class="title">{{ job.title }}</h1>
+  <br>
+  <h2 class="subtitle"><strong>Application</strong></h2>
+
+  <form action="{% url 'apply_for_job' job.id %}" method="POST">
+    {% csrf_token %}
+
+    {% if form.errors %}
+      {% for error in form.errors %}
+        <div class="notification is-danger">
+          {{ error }}
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    <div class="field">
+      <label>Content</label>
+      <div class="control">
+        <textarea name="content" id="id_content" class="textarea"></textarea>
+      </div>
+    </div>
+    
+    <div class="field">
+      <label>Experience</label>
+      <div class="control">
+        <textarea name="experience" id="id_experience" class="textarea"></textarea>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <button class="button">Submit</button>
+      </div>
+    </div>
+  </form>
+{% endblock content %}

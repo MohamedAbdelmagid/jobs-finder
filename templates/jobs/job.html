@@ -4,5 +4,6 @@
 
 <p class="is-size-4">{{ job.description }}</p>
 <p>{{ job.details }}</p>
+<a href="{% url 'apply_for_job' job.id %}" class="button">Apply</a>
 
 {% endblock content %}
