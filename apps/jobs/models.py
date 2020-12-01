@@ -22,6 +22,6 @@ class Application(models.Model):
     job = models.ForeignKey(Job, related_name='applications', on_delete=models.CASCADE)
     content = models.TextField()
     experience = models.TextField()
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     applicant = models.ForeignKey(User, related_name='applications', on_delete=models.CASCADE)
