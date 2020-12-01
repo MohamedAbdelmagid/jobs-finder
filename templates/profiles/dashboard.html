@@ -3,9 +3,25 @@
   <h2 class="title">Dashboard</h2>
 
   {% if profile.is_employer %}
-    Is employer
+    <h2 class="subtitle">Jobs</h2>
+    {% for job in user.jobs.all %}
+    <div class="job">
+      {{ job.title }}
+    </div>
+    {% empty %}
+    <p>No job posted!</p>
+    {% endfor %}
+
   {% else %}
-    Is hunter
+  <h2 class="subtitle">Applications</h2>
+  {% for app in user.applications.all %}
+  <div class="application">
+    {{ app.job.title }}
+  </div>
+  {% empty %}
+  <p>No application</p>
+  {% endfor %}
+  
   {% endif %}
   
 {% endblock content %}
