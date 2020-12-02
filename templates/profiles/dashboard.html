@@ -16,12 +16,12 @@
   <h2 class="subtitle">Applications</h2>
   {% for app in user.applications.all %}
   <div class="application">
-    {{ app.job.title }}
+    <a href="{% url 'application' app.id %}" class="link">{{ app.job.title }}</a>
   </div>
   {% empty %}
   <p>No application</p>
   {% endfor %}
-  
+
   {% endif %}
   
 {% endblock content %}

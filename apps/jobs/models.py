@@ -25,3 +25,6 @@ class Application(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     applicant = models.ForeignKey(User, related_name='applications', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.applicant.username} - {self.job.title}'
