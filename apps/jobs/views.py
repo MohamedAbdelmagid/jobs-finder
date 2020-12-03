@@ -48,3 +48,10 @@ def apply_for_job(request, job_id):
         'job': job,
     }
     return render(request, 'jobs/apply_for_job.html', context)
+
+@login_required
+def job_dashboard(request, job_id):
+    job = get_object_or_404(Job, pk=job_id, employer=request.user)
+
+    context = { 'job': job }
+    return render(request, 'jobs/job_dashboard.html', context)

@@ -11,7 +11,10 @@ def dashboard(request):
 
 @login_required
 def application(request, app_id):
-    application = get_object_or_404(Application, pk=app_id, applicant=request.user)
+    if request.user.profile.is_employer:
+        application = get_object_or_404(Application, pk=app_id, job__employer=request.user)
+    else:
+        application = get_object_or_404(Application, pk=app_id, applicant=request.user)
 
     context = { 'application': application }
     return render(request, 'profiles/application.html', context)

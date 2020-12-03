@@ -6,7 +6,7 @@
     <h2 class="subtitle">Jobs</h2>
     {% for job in user.jobs.all %}
     <div class="job">
-      {{ job.title }}
+      <a href="{% url 'job_dashboard' job.id %}">{{ job.title }}</a>
     </div>
     {% empty %}
     <p>No job posted!</p>
