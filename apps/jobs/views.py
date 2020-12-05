@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 
+from apps.profiles.utilities import create_notification
 from . models import Job
 from . forms import NewJobForm, ApplicationForm
 
@@ -38,6 +39,8 @@ def apply_for_job(request, job_id):
             app.job = job
             app.applicant = request.user
             app.save()
+
+            create_notification(request, job.employer, 'application', app.id)
 
             return redirect('dashboard')
     else:

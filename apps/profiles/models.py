@@ -26,3 +26,25 @@ class Message(models.Model):
 
     class Meta:
         ordering = ['sended_at']
+
+class Notification(models.Model):
+    """ Model that represent a notification in the database """
+
+    MESSAGE = 'message'
+    APPLICATION = 'application'
+
+    TYPES = (
+        (MESSAGE, 'Message'),
+        (APPLICATION, 'Application')
+    )
+
+    which = models.CharField(max_length=20, choices=TYPES)
+    is_seen = models.BooleanField(default=False)
+    identifier = models.IntegerField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    recipient = models.ForeignKey(User, related_name='notifications', on_delete=models.CASCADE)
+    creator = models.ForeignKey(User, related_name='created_notifications', on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['-created_at']
